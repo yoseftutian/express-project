@@ -44,6 +44,11 @@ router.post("/", async (req, res) => {
   res.send("Product created");
 });
 
+router.post("/many", async (req, res) => {
+  await productsCollection.insertMany(req.body);
+  res.send("Product created");
+});
+
 router.delete("/:id", async (req, res) => {
   await productsCollection.deleteOne({
     _id: new ObjectId(req.params.id),

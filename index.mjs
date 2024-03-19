@@ -1,6 +1,7 @@
 import express, { json } from "express";
 import Products from "./products.mjs";
 import Users from "./users.mjs";
+import cors from "cors";
 import { expressjwt as jwt } from "express-jwt";
 import dotenv from "dotenv";
 // import { randomBytes } from "crypto";
@@ -11,6 +12,7 @@ const app = express();
 const port = 3001;
 
 app.use(json());
+app.use(cors());
 app.use(
   jwt({
     secret: process.env.JWT_SECRET,
