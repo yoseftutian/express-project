@@ -6,7 +6,7 @@ const router = Router();
 router.get("/", async (req, res) => {
   try {
     const products = await productsCollection.find().toArray();
-    res.json({ data: products, status: "OK" });
+    res.status(200).json(products);
   } catch (error) {
     res.json({ error: error, status: "Error" });
   }
@@ -20,10 +20,7 @@ router.get("/:id", async (req, res, next) => {
     if (!product) {
       throw new Error("Product not found");
     }
-    res.json({
-      data: product,
-      status: "OK",
-    });
+    res.status(200).json(product);
   } catch (error) {
     next(error);
   }
