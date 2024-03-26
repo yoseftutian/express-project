@@ -59,10 +59,7 @@ router.post("/login", async (req, res, next) => {
       const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, {
         algorithm: "HS256",
       });
-      res.json({
-        data: token,
-        status: "OK",
-      });
+      res.status(200).send(token);
     } else {
       throw new Error("Password does not match");
     }
